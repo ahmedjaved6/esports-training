@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esports Training Facility - Expression of Interest</title>
+    <style>
+        /* Esports Dark Theme */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #0d0d0d;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 450px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #1a1a1a;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 255, 255, 0.3);
+        }
+
+        h1 {
+            color: #00ffff;
+            font-size: 26px;
+        }
+
+        p {
+            font-size: 14px;
+            color: #cccccc;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-size: 14px;
+            text-align: left;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            background: #262626;
+            color: white;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 20px;
+            background: #00ffff;
+            color: #0d0d0d;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background: #009999;
+        }
+
+        .thank-you {
+            display: none;
+            font-size: 18px;
+            color: #00ff99;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Esports Training Facility - Expression of Interest</h1>
+        <p>Fill in the form below to express your interest in our esports training program.</p>
+
+        <form id="esportsForm">
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" required>
+
+            <label for="age">Age</label>
+            <input type="number" id="age" name="age" required>
+
+            <label for="location">Location</label>
+            <input type="text" id="location" name="location" required>
+
+            <label for="game">Primary Game</label>
+            <input type="text" id="game" name="game" required>
+
+            <label for="rank">Game Rank (if any)</label>
+            <input type="text" id="rank" name="rank">
+
+            <label for="experience">Years of Esports Experience</label>
+            <input type="number" id="experience" name="experience" required>
+
+            <label for="device">Preferred Gaming Device</label>
+            <select id="device" name="device">
+                <option value="PC">PC</option>
+                <option value="Console">Console</option>
+                <option value="Mobile">Mobile</option>
+            </select>
+
+            <label for="scholarship">Interested in Scholarship?</label>
+            <select id="scholarship" name="scholarship">
+                <option value="Yes">Yes</option>
+                <option value="No">No</option>
+            </select>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <div class="thank-you" id="thankYouMessage">
+            ✅ Thank you for your submission! We will contact you soon.
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("esportsForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevent page reload
+
+            let formData = new FormData(this);
+
+            fetch("https://script.google.com/macros/s/AKfycbxvDR7y4LnzJLLF8fFXgJevTrEwiyad4PPZCacBCmlfwanaPxXQHEuHIi-ABQokhPFl/exec", {
+                method: "POST",
+                body: formData
+            })
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("esportsForm").style.display = "none";
+                document.getElementById("thankYouMessage").style.display = "block";
+            })
+            .catch(error => console.error("Error:", error));
+        });
+    </script>
+
+</body>
+</html>
